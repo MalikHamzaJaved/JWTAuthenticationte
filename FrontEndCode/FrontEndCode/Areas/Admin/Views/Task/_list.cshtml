@@ -1,0 +1,83 @@
+﻿@using ShopOnClick.Models
+@{
+    List<ShopOnClick.Models.Task> TaskIdList = Model.listTask;
+
+}
+
+<div class="table-responsive pb-2 ">
+    <table id="dtList" class="table table-hover table-condensed ">
+        <thead class="text-sm">
+            <tr>
+                <th style="width:25px">Code</th>
+                <th>Name </th>
+        
+                <th style="width:15px"></th>
+                <th style="        width: 15px"></th>
+
+            </tr>
+        </thead>
+        <tfoot style="display:table-row-group">
+            <tr class="text-center">
+                <th>Id</th>
+                <th>Name </th>
+           
+                <td></td>
+                <td></td>
+
+            </tr>
+        </tfoot>
+        <tbody>
+            @foreach (var item in TaskIdList)
+            {
+
+            <tr class="text-center">
+                <td>@item.Id</td>
+                <td class="text-left">@item.TaskName </td>
+               
+                <td class="text-center padding-5">
+                    <a href="/admin/Task/edit/@item.Id" class="btn btn-default btn-block  btn-xs "><i class="fa fa-edit"></i></a>
+                </td>
+                <td class="text-center padding-5">
+                    <a href="javascript:void(0)" class="btn btn-default btn-block btn-xs " onclick="deleteItem('@item.Id')"><i class="fa fa-times text-danger"></i></a>
+                </td>
+            </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+
+<script>
+    $(function () {
+        _initDatatable('#dtList');
+    });
+
+    function deleteItem(id) {
+        confirmAction('Confirm ?', 'Are you sure you want to save changes ?', 'info', 'Yes', 'No').then(function (result) {
+            if (result.value == true) {
+
+                $.ajax({
+                    url: "/admin/Task/delete",
+                    async: false,
+                    type: "POST",
+                    data: { id },
+                    success: function (data) {
+                        if (data.result.isError != true) {
+                            showMsg('Deleted !', 'Record has been deleted !', 'success');
+                            setTimeout(function () {
+                                window.location = '/admin/Task';
+                            }, 500);
+                        }
+                        else if (data.result.msg != '') {
+                            showMsg('Delete Failed !', data.result.msg, 'error');
+                        }
+                        else {
+                            showMsg('Delete Failed !', 'Something went wrong. Try again', 'error');
+                        }
+                    }
+                });
+            }
+        });
+    }
+
+</script>

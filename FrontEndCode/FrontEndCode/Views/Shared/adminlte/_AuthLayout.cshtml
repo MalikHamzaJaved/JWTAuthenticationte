@@ -1,0 +1,87 @@
+﻿
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>FrontEnd Admin</title>
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="/adminlte/plugins/fontawesome-free/css/all.min.css">
+    <!-- Ionicons -->
+    <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <!-- icheck bootstrap -->
+    <link rel="stylesheet" href="/adminlte/plugins/icheck-bootstrap/icheck-bootstrap.min.css">
+    <!-- Theme style -->
+    <link rel="stylesheet" href="/adminlte/dist/css/adminlte.min.css">
+    <!-- Google Font: Source Sans Pro -->
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+</head>
+<body class="hold-transition login-page">
+
+    @RenderBody()
+
+    <!-- jQuery -->
+    <script src="/adminlte/plugins/jquery/jquery.min.js"></script>
+    <!-- Bootstrap 4 -->
+    <script src="/adminlte/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <!-- AdminLTE App -->
+    <script src="/adminlte/dist/js/adminlte.min.js"></script>
+
+    <!--Sweet Alert 2 plugin-->
+
+    <script src="/adminlte/plugins/sweetalert/sweetalert2.all.js"></script>
+    <script src="/adminlte/plugins/sweetalert/sweetalert2.js"></script>
+    <link rel="stylesheet" href="/adminlte/plugins/sweetalert/sweetalert2.css" />
+
+    <script>
+
+        function showMsg(_title, _html, _type) {
+            swal({
+                title: _title,
+                html: _html,
+                buttonsStyling: false,
+                confirmButtonClass: "btn btn-" + (_type == null ? 'success' : (_type == 'error' ? 'danger' : _type)) + " btn-fill",
+                type: _type,
+                timer: 5000
+            });
+        };
+
+    </script>
+    @RenderSection("scripts", false)
+
+
+    <style>
+
+        .card {
+            box-shadow: none !important;
+            margin-bottom: auto !important;
+        }
+
+        .btn-primary {
+            background-color: #3d6d50 !important;
+            border-color: #3d6d50 !important;
+        }
+
+        html, body, .login-page, .register-page, .login-card-body, .register-card-body {
+            background: #538e6a;
+            color: white;
+        }
+
+        .fa, .fas {
+            color: white;
+        }
+
+        .register-box {
+            width: 660px;
+        }
+
+        hr {
+            border-top: 1px solid white;
+        }
+    </style>
+
+</body>
+</html>

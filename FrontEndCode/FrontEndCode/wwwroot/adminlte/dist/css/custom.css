@@ -1,0 +1,145 @@
+﻿.btn-primary {
+    background-color: #7dc896 !important;
+    border-color: #7dc896 !important;
+}
+
+
+.card-title {
+    font-size: 1.3rem;
+}
+
+
+
+table.dataTable tbody tr {
+    background-color: #f9f6f6 !important;
+}
+
+
+table.dataTable tfoot th, table.dataTable tfoot td {
+    padding: 6px 2px !important;
+    border-top: 0px solid #111 !important;
+}
+
+
+    table.dataTable tfoot th .form-control {
+        width: 100% !important;
+        border: 1px solid #ffffff !important;
+        background-color: whitesmoke;
+        font-size: 90%;
+    }
+
+button.dt-button, div.dt-button, a.dt-button {
+    border-radius: 5px !important;
+    border-color: silver !important;
+}
+
+
+
+
+
+.table-bordered {
+    border-color: #ddd !important;
+    border-width: 1px 0px 1px 0px !important;
+    border-style: solid !important;
+}
+
+
+div.dataTables_wrapper div.dataTables_filter input {
+    border-style: solid;
+    border-color: whitesmoke;
+    border-radius: 5px;
+}
+
+div.dt-buttons {
+    margin-bottom: 5px;
+}
+
+table.dataTable tbody th, table.dataTable tbody td {
+    padding: 4px 5px !important;
+    vertical-align: middle !important;
+}
+
+table.dataTable thead th, table.dataTable thead td {
+    padding: 12px 18px !important;
+    border-left: 1px solid white;
+    border-right: 1px solid white;
+}
+
+table.dataTable tbody th, table.dataTable tbody td {
+    border-left: 1px solid white;
+    border-right: 1px solid white;
+}
+
+
+
+
+
+
+[class*=sidebar-dark-] .nav-sidebar > .nav-item > .nav-treeview {
+    background-color: #474f56 !important;
+    border-radius: 5px !important;
+}
+
+
+[class*=sidebar-dark-] .nav-treeview > .nav-item > .nav-link {
+    border-bottom: 1px solid #343a40 !important;
+}
+
+
+.nav-link {
+    padding: .3rem 1rem !important;
+}
+
+.nav-sidebar > .nav-item {
+    background-color: #7dc896;
+    border: 0px !important;
+    margin-bottom: 5px;
+    border-radius: 5px;
+}
+
+[class*=sidebar-dark-] .sidebar a {
+    color: inherit;
+}
+
+.nav-sidebar .nav-item > .nav-link {
+    margin-bottom: 0rem;
+}
+
+
+[class*=sidebar-dark-] .nav-sidebar > .nav-item.menu-open > .nav-link, [class*=sidebar-dark-] .nav-sidebar > .nav-item:hover > .nav-link, [class*=sidebar-dark-] .nav-sidebar > .nav-item > .nav-link:focus {
+    background-color: rgba(255,255,255,.1);
+    color: #343a40;
+    font-weight: bold;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+.nav-sidebar > .nav-item .nav-icon {
+    display: none !important;
+}
+
+
+.card {
+    padding: 0px !important;
+}
+
+.card-header {
+    background-color: #eaf9ef;
+}
+
+.card-title {
+    font-weight: 600;
+    letter-spacing: 1px;
+    color: grey;
+}
+
+label:not(.form-check-label):not(.custom-file-label) {
+    font-weight: 500;
+}
+
+
+
+.navbar-light .navbar-nav .nav-link {
+    font-weight: bold;
+    letter-spacing: 1px;
+}

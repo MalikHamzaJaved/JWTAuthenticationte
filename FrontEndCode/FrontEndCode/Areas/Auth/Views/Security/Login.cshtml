@@ -1,0 +1,96 @@
+﻿
+@{
+    Layout = "~/Views/Shared/adminlte/_AuthLayout.cshtml";
+}
+
+<div class="login-box">
+    @*<div class="login-logo">
+            <a href="javascript:void(0)"><b>Help Center</b> </a>
+        </div>*@
+    <!-- /.login-logo -->
+    <div class="card">
+        <div class="card-body login-card-body">
+            <div class="text-center">
+                <img src="/adminlte/dist/img/Shopitonclick.png" alt="Logo">
+            </div>
+            <p class="login-box-msg mt-2"><b>Front End Code</b><hr class="mt-0" />Sign in to start your session</p>
+
+
+
+            <form id="frmEdit">
+                <div class="input-group mb-3">
+                    <input id="Username" name="Username" type="text" class="form-control" placeholder="User Name" required>
+                    <div class="input-group-append">
+                        <div class="input-group-text">
+                            <span class="fas fa-envelope"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="input-group mb-3">
+                    <input id="pwd" name="Password" type="password" class="form-control" placeholder="Password" required>
+                    <div class="input-group-append">
+                        <div class="input-group-text">
+                            <span class="fas fa-lock"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <!-- /.col -->
+                    <div class="col-12">
+                        <button type="submit" class="btn btn-primary btn-block">Sign In</button>
+                    </div>
+
+                    <!-- /.col -->
+                </div>
+            </form>
+
+
+
+            @*<p class="mb-1">
+                    <a href="forgot-password.html">I forgot my password</a>
+                </p>
+                <p class="mb-0">
+                    <a href="register.html" class="text-center">Register a new membership</a>
+                </p>*@
+        </div>
+        <!-- /.login-card-body -->
+    </div>
+</div>
+
+<!-- /.login-box -->
+
+@section scripts{
+
+    <script>
+        $(function () {
+
+        });
+
+
+        $('#frmEdit').on('submit', function (e) {
+            e.preventDefault();
+            var params = $('#frmEdit').serialize();
+            $.ajax({
+                url: "/auth/Security/verify",
+                async: false,
+                type: "POST",
+                data: params,
+                success: function (response) {
+                    var status = response.status;
+                    if (status == true) {
+                        showMsg('Login Successfully', 'You have successfully logged into the ShopItOnClick !', 'success');
+                        setTimeout(() => {
+                            window.location = '/home';
+                        }, 1500);
+                    } else {
+                        showMsg('Login Failed', 'The email or password you entered is incorrect.', 'error');
+                    }
+
+                }
+            });
+
+        });
+
+    </script>
+
+}

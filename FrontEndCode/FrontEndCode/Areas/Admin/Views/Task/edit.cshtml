@@ -1,0 +1,106 @@
+﻿@using ShopOnClick.Models
+@{
+    ShopOnClick.Models.Task TaskDetail = Model.IdDetail;
+    bool isEdit = (TaskDetail != null);
+  
+}
+
+
+
+<form id="frmEdit" role="form">
+    <input type="hidden" id="ACTION_TYPE" name="ACTION_TYPE" value="@(isEdit ? "update" : "save")" />
+    <input type="hidden" id="Id" name="Id" class="form-control" value="@(TaskDetail != null ? TaskDetail.Id : 0)" @(isEdit ? "readonly" : "") min="3" maxlength="3">
+
+    <div class="card card-default card-outline col-lg-8">
+
+        <div class="card-header">
+            <h2 class="card-title">
+                Task Info
+            </h2>
+            <!-- tools box -->
+            <div class="card-tools">
+                <button type="submit" class="btn  btn-sm btn-primary">
+                    <i class="fas fa-save fa-fw"></i> Save
+                </button>
+                <a href="/admin/Task" type="button" class="btn  btn-sm btn-default">
+                    <i class="fas fa-arrow-left fa-fw"></i> Return
+                </a>
+            </div>
+            <!-- /. tools -->
+        </div>
+        <div class="card-body">
+
+            <div class="row">
+
+
+
+
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        <label>Task (English)</label>
+                        <input type="text" id="TaskName" name="TaskName" class="form-control" value="@(TaskDetail!=null?TaskDetail.TaskName: null)" required>
+                    </div>
+                </div>
+            
+              
+               
+
+            </div>
+        </div>
+
+    </div>
+
+</form>
+
+
+
+
+
+@section scripts{
+
+    <script>
+        $(function () {
+
+        });
+
+
+        $('#frmEdit').on('submit', function (e) {
+            e.preventDefault();
+            var actionType = $('#ACTION_TYPE').val();
+
+            confirmAction('Confirm ?', 'Are you sure you want to save changes ?', 'info', 'Yes', 'No').then(function (result) {
+                if (result.value == true) {
+
+                    var params = $('#frmEdit').serialize();
+                    $.ajax({
+                        url: "/admin/Task/" + actionType,
+                        async: false,
+                        type: "POST",
+                        data: params,
+                        success: function (data) {
+                            if (data.result.isError != true) {
+                                showMsg('Saved !', 'Record has been saved !', 'success');
+                                setTimeout(function () {
+                                    window.location = '/admin/Task';
+                                }, 500);
+                            }
+                            else if (data.result.msg != '') {
+                                showMsg('Save Failed !', data.result.msg, 'error');
+                            }
+                            else {
+                                showMsg('Save Failed !', 'Something went wrong. Try again', 'error');
+                            }
+                        }
+                    });
+                }
+            });
+
+
+
+
+        });
+
+
+    </script>
+
+}
